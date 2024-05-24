@@ -1,0 +1,55 @@
+<h2><b><u>Employee List</u></b></h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>EmpId</th>
+            <th>First Name </th>
+            <th>Last Name </th>
+            <th style="text-align: center;">Email Id </th>
+            <th>Date of Birth</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Designation</th>
+            <th>Department</th>
+            <th>Marital Status</th>
+            <th>Date Of Joining</th>
+            <th>Basic Salary</th>
+            <th style="text-align: center;">Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.employeeId}}</td>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.email}}</td>
+            <td>{{employee.dateofBirth}}</td>
+            <td>{{employee.gender}}</td>
+            <td>{{employee.address}}</td>
+            <td>{{employee.phoneNumber}}</td>
+            <td>{{employee.designation}}</td>
+            <td>{{employee.department}}</td>
+            <td>{{employee.maritalStatus}}</td>
+            <td>{{employee.dateofJoining}}</td>
+            <td>{{employee.basicSalary}}</td>
+            <td>
+                <div class="d-flex flex-row">
+                    <button (click)="updateEmployee(employee.id)" class="btn btn-info">Update</button>
+                    <button (click)="deleteEmployee(employee.id)" class="btn btn-danger ms-2">Delete</button>
+                    <button (click)="employeeDetails(employee.id)" class="btn btn-info ms-2">View</button>
+                  </div>
+                <!-- <button (click)="updateEmployee(employee.id)" class="btn btn-info">Update</button>
+
+                <button (click)="deleteEmployee(employee.id)"class="btn btn-danger" style="margin-left: 10px">Delete
+                </button>
+
+                 <button (click)="employeeDetails(employee.id)"class="btn btn-info" style="margin-left: 10px">View
+                </button> -->
+
+            </td> 
+
+        </tr>
+    </tbody>
+</table>

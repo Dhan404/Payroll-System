@@ -1,0 +1,124 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update Employee </h3>
+    <form (ngSubmit) = "onSubmit()">
+
+      <div class="form-group">
+        <label>Employee Id</label>
+        <input type="number" required #employeeId="ngModel" [class.is-invalid]="employeeId.invalid && employeeId.touched" class="form-control" id="employeeId"
+          [(ngModel)]="salary.employeeId" name="employeeId" [readonly]="true">
+        <small class="text-danger" [class.d-none]="employeeId.valid || employeeId.untouched">EmployeeId is required</small>
+      </div>
+
+     
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" required #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched" class="form-control" id="firstName"
+              [(ngModel)]="salary.firstName" name="firstName" [readonly]="true">
+            <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched" >First Name is required</small>
+          </div>
+    
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" required #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" class="form-control" id="lastName"
+              [(ngModel)]="salary.lastName" name="lastName" [readonly]="true">
+            <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">Last Name is required</small>
+          </div>
+
+          <div class="form-group">
+            <label>Designation</label>
+            <input type="text" required #designation="ngModel" [class.is-invalid]="designation.invalid && designation.touched" class="form-control" id="designation"
+              [(ngModel)]="salary.designation" name="lastName" [readonly]="true">
+            <small class="text-danger" [class.d-none]="designation.valid || designation.untouched">Designation is required</small>
+          </div>
+
+          
+          <div class="form-group">
+            <label>Marital Status</label>
+            <input type="text" required #maritalStatus="ngModel" [class.is-invalid]="maritalStatus.invalid && maritalStatus.touched" class="form-control" id="maritalStatus"
+              [(ngModel)]="salary.maritalStatus" name="maritalStatus" [readonly]="true">
+            <small class="text-danger" [class.d-none]="maritalStatus.valid || maritalStatus.untouched">Marital Status is required</small>
+          </div>
+
+          <div class="form-group">
+            <label>Basic Salary</label>
+            <input type="number" required #basicSalary="ngModel" [class.is-invalid]="basicSalary.invalid && basicSalary.touched" class="form-control" id="basicSalary"
+              [(ngModel)]="salary.basicSalary" name="basicSalary" [readonly]="true">
+            <small class="text-danger" [class.d-none]="basicSalary.valid || basicSalary.untouched">Basic Salary is required</small>
+          </div>
+
+          <div class="form-group">
+            <label>Dearness Allowance</label>
+            <input type="number" required #dearnessAllowance="ngModel" [class.is-invalid]="dearnessAllowance.invalid && dearnessAllowance.touched" class="form-control" id="dearnessAllowance"
+              [(ngModel)]="salary.dearnessAllowance" name="dearnessAllowance">
+            <small class="text-danger" [class.d-none]="dearnessAllowance.valid || dearnessAllowance.untouched">Dearness Allowance is required</small>
+          </div>
+
+          <div class="form-group">
+            <label>House Rent Allowance</label>
+            <input type="number" required #houseRentAllowance="ngModel" [class.is-invalid]="houseRentAllowance.invalid && houseRentAllowance.touched" class="form-control" id="houseRentAllowance"
+              [(ngModel)]="salary.houseRentAllowance" name="houseRentAllowance">
+            <small class="text-danger" [class.d-none]="houseRentAllowance.valid || houseRentAllowance.untouched">House Rent Allowance is required</small>
+          </div>
+          <br>
+
+          <div class="form-group">
+            <label for="calculateDeduction">Calculate Deduction</label>
+            <input type="checkbox" class="form-check-input" id="calculateDeduction" [(ngModel)]="calculateDeduction" name="calculateDeduction" (change)="onCalculateDeductionChange()">
+          </div>
+      
+          <div class="form-group" *ngIf="calculateDeduction">
+            <label for="pfContribution">PF Contribution</label>
+            <input type="number" class="form-control" id="pfContribution" [(ngModel)]="salary.pfContribution" name="pfContribution" [readonly]="true">
+          </div>
+          
+          <div class="form-group" *ngIf="calculateDeduction">
+            <label for="ssfContribution">SSF Contribution</label>
+            <input type="number" class="form-control" id="ssfContribution" [(ngModel)]="salary.ssfContribution" name="ssfContribution" [readonly]="true">
+          </div>
+      
+          <div class="form-group" *ngIf="calculateDeduction">
+            <label for="medicalInsurance">Medical Insurance</label>
+            <input type="number" class="form-control" id="medicalInsurance" [(ngModel)]="salary.medicalInsurance" name="medicalInsurance" [readonly]="true">
+          </div>
+          <br>
+          <br>
+      
+          <div class="form-group">
+            <label for="calculateTaxableIncome">Calculate Gross Salary & Taxable Income</label>
+            <input type="checkbox" class="form-check-input" id="calculateTaxableIncome" [(ngModel)]="calculateTaxableIncome" name="calculateTaxableIncome" (change)="onCalculateTaxableIncomeChange()">
+          </div>
+      
+          <div class="form-group" *ngIf="calculateTaxableIncome">
+            <label for="taxableMonthlyIncome">Taxable Monthly Income</label>
+            <input type="number" class="form-control" id="taxableMonthlyIncome" [(ngModel)]="salary.taxableMonthlyIncome" name="taxableMonthlyIncome" [readonly]="true">
+          </div>
+          
+          <div class="form-group" *ngIf="calculateTaxableIncome">
+            <label for="taxableAnnualIncome">Taxable Annual Income</label>
+            <input type="number" class="form-control" id="taxableAnnualIncome" [(ngModel)]="salary.taxableAnnualIncome" name="taxableAnnualIncome" [readonly]="true">
+          </div>
+          <br>
+          <br>
+      
+          <div class="form-group">
+            <label for="calculateMonthlyIncomeTaxNetSalary">Calculate Monthly Income Tax and Net Salary</label>
+            <input type="checkbox" class="form-check-input" id="calculateMonthlyIncomeTaxNetSalary" [(ngModel)]="calculateMonthlyIncomeTaxNetSalary" name="calculateMonthlyIncomeTaxNetSalary" (change)="onCalculateMonthlyIncomeTaxNetSalaryChange()">
+          </div>
+      
+          <div class="form-group" *ngIf="calculateMonthlyIncomeTaxNetSalary">
+            <label for="monthlyIncomeTax">Monthly Income Tax</label>
+            <input type="number" class="form-control" id="monthlyIncomeTax" [(ngModel)]="salary.monthlyIncomeTax" name="monthlyIncomeTax" [readonly]="true">
+          </div>
+          
+          <div class="form-group" *ngIf="calculateMonthlyIncomeTaxNetSalary">
+            <label for="netMonthlySalary">Net Monthly Salary</label>
+            <input type="number" class="form-control" id="netMonthlySalary" [(ngModel)]="salary.netMonthlySalary" name="netMonthlySalary" [readonly]="true">
+          </div>
+          
+     
+      
+    
+        <button class = "btn btn-success" type ="submit">Update</button>
+    
+    </form>
+    </div> 

@@ -1,0 +1,77 @@
+<!-- employee-details.component.html -->
+<style>
+    /* Hide default browser header and footer when printing */
+    @media print {
+        @page {
+            size: auto; /* Make sure the size is set to auto */
+            margin: 0; /* Remove default browser margins */
+        }
+        body {
+            margin: 1.6cm; /* Set custom margin to provide spacing from top and bottom */
+        }
+    }
+</style>
+<div id="printContent">
+    <h3>View Employee Details</h3><br>
+
+    <div>
+        <label><b>Employee ID: </b>{{employee.employeeId}}</label>
+    </div>
+    <div>
+        <label><b>First Name: </b>{{employee.firstName}}</label>
+    </div>
+
+    <div>
+        <label><b>Last Name: </b>{{employee.lastName}}</label>
+    </div>
+
+    <div>
+        <label><b>Email Id: </b>{{employee.email}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Date of dateofBirth </b>{{employee.dateofBirth}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Gender: </b>{{employee.gender}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Address: </b>{{employee.address}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Phone Number: </b>{{employee.phoneNumber}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Designation: </b>{{employee.designation}}</label>
+    </div>
+
+    <div>
+        <label><b>Department: </b>{{employee.department}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Marital Status: </b>{{employee.maritalStatus}}</label>
+    </div>
+
+    
+    <div>
+        <label><b>Date of Joining: </b>{{employee.dateofJoining}}</label>
+    </div>
+
+    <div>
+        <label><b>Basic Salary </b>{{employee.basicSalary}}</label>
+    </div>
+</div>
+
+<!-- Add the Print Button -->
+<button (click)="printEmployeeDetails()">Print</button>

@@ -1,0 +1,113 @@
+<div class="col-md-6 offset-md-3">
+    <h3> Update Employee </h3>
+    <form (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" required #firstName="ngModel" [class.is-invalid]="firstName.invalid && firstName.touched" class="form-control" id="firstName"
+              [(ngModel)]="employee.firstName" name="firstName">
+            <small class="text-danger" [class.d-none]="firstName.valid || firstName.untouched">First Name is required</small>
+          </div>
+    
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" required #lastName="ngModel" [class.is-invalid]="lastName.invalid && lastName.touched" class="form-control" id="lastName"
+              [(ngModel)]="employee.lastName" name="lastName">
+            <small class="text-danger" [class.d-none]="lastName.valid || lastName.untouched">Last Name is required</small>
+          </div>
+     
+        <div class="form-group">
+            <label>Email Id</label>
+            <input type="email" class="form-control" id="email"
+              [(ngModel)]="employee.email" name="email" required
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+              #emailInput="ngModel">
+          
+            <div *ngIf="emailInput.errors && emailInput.invalid && emailInput.touched">
+              <small class="text-danger" *ngIf="emailInput.errors['required']">Email is required</small>
+              <small class="text-danger" *ngIf="emailInput.errors['pattern']">Invalid email format</small>
+            </div>
+          </div>
+    
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" required #dateofBirth="ngModel" [class.is-invalid]="dateofBirth.invalid && dateofBirth.touched" class="form-control" id="dateofBirth"
+              [(ngModel)]="employee.dateofBirth" name="dateofBirth">
+            <small class="text-danger" [class.d-none]="dateofBirth.valid || dateofBirth.untouched">First Name is required</small>
+          </div>
+
+          <div class="form-group">
+            <label>Gender</label>
+            <select required class="form-control" id="gender" name="gender" [(ngModel)]="employee.gender">
+              <option value="" disabled selected hidden>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          
+    
+          <div class="form-group">
+            <label>Address</label>
+            <input type="text" required #address="ngModel" [class.is-invalid]="address.invalid && address.touched" class="form-control" id="address"
+              [(ngModel)]="employee.address" name="address">
+            <small class="text-danger" [class.d-none]="address.valid || address.untouched">Address is required</small>
+          </div>
+    
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" #phoneNumber="ngModel" pattern="^\d{10}$" required [class.is-invalid]="phoneNumber.invalid && phoneNumber.touched" class="form-control" name="phoneNumber" [(ngModel)]="employee.phoneNumber">
+            <div *ngIf="phoneNumber.errors && (phoneNumber.invalid && phoneNumber.touched)">
+              <small class="text-danger" *ngIf="phoneNumber.errors['required']">Phone number is required</small>
+      
+              <small class="text-danger" *ngIf="phoneNumber.errors['pattern']">Phone number must be of 10 digit</small>
+            </div>
+          </div>
+    <div class="form-group">
+        <label>Designation</label>
+        <select required class="form-control" id="designation" name="designation" [(ngModel)]="employee.designation">
+          <option value="" disabled selected hidden>Select Designation</option>
+          <option value="Manager">Manager</option>
+          <option value="Employee">Employee</option>
+          <option value="Supervisor">Supervisor</option>
+        </select>
+      </div>
+    
+      <div class="form-group">
+        <label>Department</label>
+        <select required class="form-control" id="department" name="department" [(ngModel)]="employee.department">
+          <option value="" disabled selected hidden>Select Department</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Marketing">Marketing</option>
+          <option value="Finance">Finance</option>
+        </select>
+      </div>
+    
+         
+      <div class="form-group">
+        <label>Marital Status</label>
+        <select required class="form-control" id="maritalStatus" name="maritalStatus" [(ngModel)]="employee.maritalStatus">
+          <option value="" disabled selected hidden>Select Marital Status</option>
+          <option value="Married">Married</option>
+          <option value="Unmarried">Unmarried</option>
+        </select>
+      </div>
+    
+          <div class="form-group">
+            <label>Date of Joining</label>
+            <input type="date" required #dateofJoining="ngModel" [class.is-invalid]="dateofJoining.invalid && dateofJoining.touched" class="form-control" id="dateofJoining"
+              [(ngModel)]="employee.dateofJoining" name="dateofJoining">
+            <small class="text-danger" [class.d-none]="dateofJoining.valid || dateofJoining.untouched">Date of Joining is required</small>
+          </div> 
+
+          <div class="form-group">
+            <label>Basic Salary</label>
+            <input type="number" required #basicSalary="ngModel" [class.is-invalid]="basicSalary.invalid && basicSalary.touched" class="form-control" id="basicSalary"
+              [(ngModel)]="employee.basicSalary" name="basicSalary">
+            <small class="text-danger" [class.d-none]="basicSalary.valid || basicSalary.untouched">Basic Salary is required</small>
+          </div>
+  
+        <button class = "btn btn-success" type ="submit">Update</button>
+        <div *ngIf="errorMessage" class="alert alert-danger">
+          {{ errorMessage }}
+        </div>
+    </form>
+    </div> 

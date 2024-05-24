@@ -1,0 +1,49 @@
+<h3><u><b>Salary Payments</b></u></h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>EmpId</th>
+            <th>Date of Salary</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Designation</th>
+            <th>Marital Status</th>
+            <th>Basic Salary</th>
+            <th>Dearness Allowance</th>
+            <th>House Rent Allowance</th>
+            <th>Provident Fund</th>
+            <th>Social Security Fund</th>
+            <th>Medical Insurance</th>
+            <th>Monthly Income Tax</th>
+            <th>Net Monthly Salary</th>
+            <th  style="text-align: center;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let salary of salaries">
+            <td>{{salary.employeeId}}</td>
+            <td>{{salary.dateofSalary}}</td>
+            <td>{{salary.firstName}}</td>
+            <td>{{salary.lastName}}</td>
+            <td>{{salary.designation}}</td>
+            <td>{{salary.maritalStatus}}</td>
+            <td>{{salary.basicSalary}}</td>
+            <td>{{salary.dearnessAllowance}}</td>
+            <td>{{salary.houseRentAllowance}}</td>
+            <td>{{salary.pfContribution}}</td>
+            <td>{{salary.ssfContribution}}</td>
+            <td>{{salary.medicalInsurance}}</td>
+            <td>{{salary.monthlyIncomeTax}}</td>
+            <td>{{salary.netMonthlySalary}}</td>
+           <td>
+            <div class="d-flex flex-row">
+               <button (click)="updateSalary(salary.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+
+               <button (click)="deleteSalary(salary.id)" class="btn btn-danger" style="margin-left: 10px">Delete</button>
+
+               <button (click)="salaryDetails(salary.id)" class="btn btn-info" style="margin-left: 10px">View</button>
+            </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
